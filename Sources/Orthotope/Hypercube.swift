@@ -1,8 +1,6 @@
 public import Point
 public import Size
 
-/// An equal-half-extents specialization owned by the Orthotope module.
-/// Storing one validated half-side preserves equality of extents under mutation.
 public struct Hypercube<let N: Int, Scalar: Magnitude::Scalar> {
     public var center: Point<N, Scalar>
     public var halfSide: Magnitude<Scalar>
@@ -47,8 +45,7 @@ extension Hypercube: Decodable where Scalar: Decodable {
 #endif
 
 extension Hypercube {
-    /// Recognize exactly equal extents, without a floating-point tolerance.
-    /// In zero dimensions the absent half-side is canonically chosen as zero.
+
     public init?(_ orthotope: Orthotope<N, Scalar>) {
         let side: Magnitude<Scalar>
         if N == 0 {

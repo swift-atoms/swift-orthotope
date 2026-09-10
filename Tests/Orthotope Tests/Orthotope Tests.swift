@@ -84,7 +84,6 @@ import Foundation
     }
 }
 
-// These generic bodies must type-check without the opposite coding constraint.
 private func encode<let N: Int, Value: Magnitude::Scalar & Encodable>(
     _ value: Orthotope<N, Value>
 ) throws -> Data {
