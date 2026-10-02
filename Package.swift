@@ -17,7 +17,7 @@ let package = Package(
         .package(url: "https://github.com/swift-atoms/swift-affine.git", branch: "main", traits: [.trait(name: "Tagged", condition: .when(traits: ["Boundary"])), .trait(name: "Vector", condition: .when(traits: ["Boundary"]))]),
         .package(url: "https://github.com/swift-atoms/swift-boundary.git", branch: "main"),
         .package(url: "https://github.com/swift-atoms/swift-size.git", branch: "main"),
-        .package(url: "https://github.com/swift-atoms/swift-point.git", branch: "main"),
+        .package(url: "https://github.com/swift-atoms/swift-point.git", branch: "main", traits: [.trait(name: "Affine", condition: .when(traits: ["Boundary"]))]),
         .package(url: "https://github.com/swift-atoms/swift-tagged.git", branch: "main"),
     ],
     targets: [
@@ -46,14 +46,15 @@ let package = Package(
     swiftLanguageModes: [.v6]
 )
 
-for target in package.targets {
-    target.swiftSettings = [
+for target in package.targets where ![.system, .binary, .plugin].contains(target.type) {
+    target.swiftSettings = (target.swiftSettings ?? []) + [
         .strictMemorySafety(),
         .enableUpcomingFeature("ExistentialAny"),
         .enableUpcomingFeature("InternalImportsByDefault"),
         .enableUpcomingFeature("MemberImportVisibility"),
         .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
-        .enableExperimentalFeature("Lifetimes"),
         .enableUpcomingFeature("InferIsolatedConformances"),
+        .enableExperimentalFeature("Lifetimes"),
+        .treatAllWarnings(as: .error),
     ]
 }
