@@ -17,7 +17,7 @@ extension Orthotope: Sendable where Scalar: Sendable {}
 
 extension Orthotope where Scalar: SignedNumeric {
 
-    public func contains<Failure: Swift.Error>(
+    public func contains<Failure: Swift::Error>(
         _ point: Point<N, Scalar>,
         using displacement: (Point<N, Scalar>, Point<N, Scalar>) throws(Failure) -> Vector<N, Scalar>
     ) throws(Failure) -> Bool {
@@ -29,7 +29,7 @@ extension Orthotope where Scalar: SignedNumeric {
         return true
     }
 
-    public func containsInterior<Failure: Swift.Error>(
+    public func containsInterior<Failure: Swift::Error>(
         _ point: Point<N, Scalar>,
         using displacement: (Point<N, Scalar>, Point<N, Scalar>) throws(Failure) -> Vector<N, Scalar>
     ) throws(Failure) -> Bool {

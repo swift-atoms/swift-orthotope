@@ -9,11 +9,12 @@ public struct Hypercube<let N: Int, Scalar: Magnitude::Scalar> {
         self.center = center
         self.halfSide = halfSide
     }
+}
 
+extension Hypercube {
     public var orthotope: Orthotope<N, Scalar> {
         Orthotope(self)
     }
-
 }
 
 extension Hypercube: Equatable {}

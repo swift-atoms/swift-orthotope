@@ -11,7 +11,7 @@
 
 extension Orthotope where N == 2, Scalar: SignedNumeric {
 
-    public func corner<Failure: Swift.Error>(
+    public func corner<Failure: Swift::Error>(
         _ corner: Boundary.Corner,
         using affine: Affine<Point<2, Scalar>, Displacement<2, Scalar>, Failure>
     ) throws(Failure) -> Point<2, Scalar> {
