@@ -1,7 +1,7 @@
-import Orthotope
-import Testing
-import Tagged
 import Foundation
+import Orthotope
+import Tagged
+import Testing
 
 @Suite struct `Orthotope coordinate contracts` {
     private func displacement(_ a: Point<2, Int>, _ b: Point<2, Int>) -> Vector<2, Int> {
@@ -91,7 +91,8 @@ private func encode<let N: Int, Value: Magnitude::Scalar & Encodable>(
 }
 
 private func decode<let N: Int, Value: Magnitude::Scalar & Decodable>(
-    _ type: Orthotope<N, Value>.Type, from data: Data
+    _ type: Orthotope<N, Value>.Type,
+    from data: Data
 ) throws -> Orthotope<N, Value> {
     try JSONDecoder().decode(type, from: data)
 }

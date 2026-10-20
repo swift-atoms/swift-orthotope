@@ -43,29 +43,29 @@ extension Orthotope where Scalar: SignedNumeric {
 }
 
 #if !hasFeature(Embedded)
-extension Orthotope {
-    private enum CodingKeys: String, CodingKey { case center, halfExtents }
-}
-
-extension Orthotope: Decodable where Scalar: Decodable {
-
-    public init(from decoder: any Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.init(
-            center: Point(coordinates: try container.decode(Vector<N, Scalar>.self, forKey: .center)),
-            halfExtents: try container.decode(Size<N, Scalar>.self, forKey: .halfExtents)
-        )
+    extension Orthotope {
+        private enum CodingKeys: String, CodingKey { case center, halfExtents }
     }
 
-}
+    extension Orthotope: Decodable where Scalar: Decodable {
 
-extension Orthotope: Encodable where Scalar: Encodable {
-    public func encode(to encoder: any Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(center.coordinates, forKey: .center)
-        try container.encode(halfExtents, forKey: .halfExtents)
+        public init(from decoder: any Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            self.init(
+                center: Point(coordinates: try container.decode(Vector<N, Scalar>.self, forKey: .center)),
+                halfExtents: try container.decode(Size<N, Scalar>.self, forKey: .halfExtents)
+            )
+        }
+
     }
-}
+
+    extension Orthotope: Encodable where Scalar: Encodable {
+        public func encode(to encoder: any Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            try container.encode(center.coordinates, forKey: .center)
+            try container.encode(halfExtents, forKey: .halfExtents)
+        }
+    }
 #endif
 
 extension Orthotope {

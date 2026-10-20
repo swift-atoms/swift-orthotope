@@ -1,6 +1,6 @@
+import Foundation
 import Orthotope
 import Testing
-import Foundation
 
 @Suite struct `Hypercube specialization contracts` {
     @Test func `One half side expands equally across all dimensions`() throws {
