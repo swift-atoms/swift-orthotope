@@ -33,7 +33,7 @@
             }
         }
 
-        private enum Failure: Error { case overflow }
+        private enum Failure: Swift.Error { case overflow }
         @Test func `Checked affine failures propagate with their concrete type`() throws {
             let box = Orthotope(center: Point(x: Int.max, y: 0), halfExtents: try Size<2, Int>(width: 1, height: 0))
             let checked = Affine<Point<2, Int>, Displacement<2, Int>, Failure>.componentwise(

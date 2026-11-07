@@ -40,7 +40,7 @@ import Testing
     }
 
     @Test func `Displacement errors retain their failure type`() throws {
-        enum Failure: Error { case overflow }
+        enum Failure: Swift.Error { case overflow }
         let box = Orthotope(center: Point(x: 0), halfExtents: Size<1, Int>.zero)
         func subtract(_ a: Point<1, Int>, _ b: Point<1, Int>) throws(Failure) -> Vector<1, Int> {
             throw .overflow
