@@ -2,9 +2,9 @@
     import Orthotope
     import Testing
 
-enum `Orthotope Boundary Tests` {}
+    enum `Orthotope Boundary Tests` {}
 
-extension `Orthotope Boundary Tests` {
+    extension `Orthotope Boundary Tests` {
         @Suite struct `Orthotope corner interpretation` {
             @Test func `All four corners preserve the legacy positive y top convention`() throws {
                 let box = Orthotope(center: Point(x: 1.5, y: 2.0), halfExtents: try Size<2, Double>(width: 3.5, height: 5))
@@ -65,5 +65,5 @@ extension `Orthotope Boundary Tests` {
                 #expect(try box.corner(.topLeft, using: checked).x == Int.max - 1)
             }
         }
-}
+    }
 #endif
