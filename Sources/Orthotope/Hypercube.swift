@@ -1,5 +1,5 @@
 public import Point
-public import Size
+import Size
 
 public struct Hypercube<let N: Int, Scalar: Magnitude::Scalar> {
     public var center: Point<N, Scalar>
