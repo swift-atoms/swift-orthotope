@@ -1,5 +1,5 @@
-@_exported public import Point
-@_exported public import Size
+public import Point
+public import Size
 
 public struct Orthotope<let N: Int, Scalar: Magnitude::Scalar> {
     public var center: Point<N, Scalar>
